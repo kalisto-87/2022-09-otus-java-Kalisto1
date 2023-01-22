@@ -14,19 +14,19 @@ public class CustomerService {
     public Map.Entry<Customer, String> getSmallest() {
         //Возможно, чтобы реализовать этот метод, потребуется посмотреть как Map.Entry сделан в jdk
         var mapEntry = map.firstEntry();
-        return CopyEntry(mapEntry);
+        return copyEntry(mapEntry);
     }
 
     public Map.Entry<Customer, String> getNext(Customer customer) {
         var mapEntry = map.higherEntry(customer);
-        return CopyEntry(mapEntry);
+        return copyEntry(mapEntry);
     }
 
     public void add(Customer customer, String data) {
         map.put(customer, data);
     }
 
-    private Map.Entry<Customer, String> CopyEntry(Map.Entry<Customer, String> entry) {
+    private Map.Entry<Customer, String> copyEntry(Map.Entry<Customer, String> entry) {
         if (entry == null) return null;
         return Map.entry(
                 new Customer(entry.getKey().getId(), entry.getKey().getName(), entry.getKey().getScores()),
